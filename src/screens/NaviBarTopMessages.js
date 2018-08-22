@@ -17,33 +17,32 @@ class NaviBarTopMessages extends React.Component {
 		);
 	}
 
-	
 	render() {
 		return (
-			<li className={"dropdown"+(this.state.isToggleOn ? ' open' : '')} onClick={this.handleClick}>
+			<li className={"dropdown"+(this.state.isToggleOn ? ' open' : '')} onClick={ this.handleClick }>
                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">
-                	<span className="label label-success">2</span>&nbsp;
+                	<span className="label label-success">{ this.props.messages.length }</span>&nbsp;
                 	<i className={ this.props.classIcon }></i>&nbsp;
-                	<i className={"fa fa-caret-"+(this.state.isToggleOn ? 'up' : 'down')}></i>
+                	<i className={ "fa fa-caret-" + ( this.state.isToggleOn ? 'up' : 'down' ) }></i>
                 </a>
                 <ul className="dropdown-menu dropdown-messages">
-                {this.props.messages.map(function(objMessage, i){
-                    return <li>
-				                    <a href="#">
-				                    <div>
-				                        <strong>{ objMessage.title }</strong>
-				                        <span className="pull-right text-muted">
-				                            <em>{ objMessage.date }</em>
-				                        </span>
-				                    </div>
-				                    <div>{ objMessage.text }</div>
-				                </a>
-				            </li>;
-                })}                
-                    <li className="divider"></li>
+		            {this.props.messages.map(function(objMessage, i){
+		                return <li>
+			                    { (i > 0) ? <div className="divider"></div> : '' }
+		                		  <a href="#">
+		                			  <div>
+					                      <strong>{ objMessage.title }</strong>
+					                      <span className="pull-right text-muted">
+					                          <em>{ objMessage.date }</em>
+					                      </span>
+					                  </div>
+					                  <div>{ objMessage.text }</div>
+					              </a>
+					           </li>;
+		            })}                
                     <li>
                         <a className="text-center" href="#">
-                            <strong>Read All Messages</strong>
+                            <strong>Read All Messages</strong>&nbsp;&nbsp;
                             <i className="fa fa-angle-right"></i>
                         </a>
                     </li>
