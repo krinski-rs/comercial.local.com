@@ -22,7 +22,7 @@ class SideBarItem extends React.Component {
 
 	render() {
 		return (
-	            <li onClick={ this.handleClick }>
+	            <li onClick={ this.handleClick } className={ (!this.state.isToggleOn ? 'active' : '') }>
 	                <a href={this.props.href}>
 	                	<i className={this.props.itemClass}></i>&nbsp;{ this.props.text}
 	                	<span className="fa arrow"></span>

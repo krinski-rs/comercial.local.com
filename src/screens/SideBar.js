@@ -20,48 +20,6 @@ class SideBar extends React.Component {
                         		}
                         	})
                         }
-                        <li>
-                            <a href="#">
-                            	<i className="fa fa-sitemap fa-fw"></i>&nbsp;Multi-Level Dropdown
-                            	<span className="fa arrow"></span>
-                            </a>
-                            <ul className="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span className="fa arrow"></span></a>
-                                    <ul className="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="active">
-                            <a href="#"><i className="fa fa-files-o fa-fw"></i> Sample Pages<span className="fa arrow"></span></a>
-                            <ul className="nav nav-second-level">
-                                <li>
-                                    <a className="active" href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
