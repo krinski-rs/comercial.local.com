@@ -1,95 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SideBarSearch from './SideBarSearch';
+import SideBarItem from './SideBarItem';
+import ItemSideBar from './ItemSideBar';
 
 class SideBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			isToggleOn: true
-		};
-	    this.handleClick = this.handleClick.bind(this);
-	}
-	
-	handleClick(event) {
-		event.preventDefault();
-		this.setState(prevState => ({
-			isToggleOn: !prevState.isToggleOn
-			})
-		);
-	}
-
 	render() {
 		return (
 			<div className="navbar-default sidebar" role="navigation">
                 <div className="sidebar-nav navbar-collapse">
                     <ul className="nav" id="side-menu">
-                        <li className="sidebar-search">
-                            <div className="input-group custom-search-form">
-                                <input type="text" className="form-control" placeholder="Search..." />
-                                <span className="input-group-btn">
-                                    <button className="btn btn-default" type="button">
-                                        <i className="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </li>
+                        <SideBarSearch />
+                        {
+                        	this.props.menu.map(function(obj, idx){
+                        		if(!!obj.itens && (obj.itens.length > 0)){
+                        			return <SideBarItem text={obj.text} itemClass={obj.itemClass} itens={ obj.itens } key={idx}/>
+                        		}else{
+                        			return <ItemSideBar text={obj.text} itemIcon={obj.itemIcon} key={idx}/>
+                        		}
+                        	})
+                        }
                         <li>
-                            <a href="index.html"><i className="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li onClick={ this.handleClick }>
-                            <a href="#">
-                            	<i className="fa fa-bar-chart-o fa-fw"></i>&nbsp;Charts
-                            	<span className="fa arrow"></span>
-                            </a>
-                            <ul className={"nav nav-second-level" + (this.state.isToggleOn ? ' collapse' : '')}>
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="tables.html">
-                            	<i className="fa fa-table fa-fw"></i> Tables
-                            </a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i className="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li onClick={ this.handleClick }>
-                            <a href="#">
-                            	<i className="fa fa-wrench fa-fw"></i>&nbsp;UI Elements
-                            	<span className="fa arrow"></span>
-                            </a>
-                            <ul className={"nav nav-second-level" + (this.state.isToggleOn ? ' collapse' : '')}>
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li onClick={ this.handleClick }>
                             <a href="#">
                             	<i className="fa fa-sitemap fa-fw"></i>&nbsp;Multi-Level Dropdown
                             	<span className="fa arrow"></span>
                             </a>
-                            <ul className={"nav nav-second-level" + (this.state.isToggleOn ? ' collapse' : '')}>
+                            <ul className="nav nav-second-level">
                                 <li>
                                     <a href="#">Second Level Item</a>
                                 </li>
@@ -134,11 +70,117 @@ class SideBar extends React.Component {
 }
 
 SideBar.propTypes = {
-		margem: PropTypes.number
+	menu: PropTypes.array
 };
 
 SideBar.defaultProps = {
-		margem: 0
+	menu: [
+		{
+			text: 'Dashboard',
+			href: '#',
+			itemClass: '',
+			itemIcon: 'fa fa-dashboard fa-fw'
+		},
+		{
+			text: 'Tables',
+			href: '#',
+			itemClass: '',
+			itemIcon: 'fa fa-table fa-fw'
+		},
+		{
+			text: 'Forms',
+			href: '#',
+			itemClass: '',
+			itemIcon: 'fa fa-edit fa-fw'
+		},
+		{
+			text: 'UI Elements',
+			href: '#',
+			itemClass: 'fa fa-wrench fa-fw',
+			itens: [
+				{
+					text: 'Panels and Wells',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Buttons',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Notifications',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Typography',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Icons',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Grid',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				}
+			]
+		},
+		{
+			text: 'Multi-Level Dropdown',
+			href: '#',
+			itemClass: 'fa fa-sitemap fa-fw',
+			itens: [
+				{
+					text: 'Second Level Item',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Second Level Item',
+					href: '#',
+					itemClass: '',
+					itemIcon: ''
+				},
+				{
+					text: 'Third Level',
+					href: '#',
+					itemClass: '',
+					itens: [
+						{
+							text: 'Third Level Item',
+							href: '#',
+							itemClass: '',
+							itemIcon: ''
+						},
+						{
+							text: 'Third Level Item',
+							href: '#',
+							itemClass: '',
+							itemIcon: ''
+						},
+						{
+							text: 'Third Level Item',
+							href: '#',
+							itemClass: '',
+							itemIcon: ''
+						}
+					]
+				}
+			]
+		}
+	]
 };
 
 export default SideBar;
