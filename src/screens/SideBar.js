@@ -2,6 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SideBar extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isToggleOn: true
+		};
+	    this.handleClick = this.handleClick.bind(this);
+	}
+	
+	handleClick(event) {
+		event.preventDefault();
+		this.setState(prevState => ({
+			isToggleOn: !prevState.isToggleOn
+			})
+		);
+	}
+
 	render() {
 		return (
 			<div className="navbar-default sidebar" role="navigation">
@@ -20,9 +36,12 @@ class SideBar extends React.Component {
                         <li>
                             <a href="index.html"><i className="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a href="#"><i className="fa fa-bar-chart-o fa-fw"></i> Charts<span className="fa arrow"></span></a>
-                            <ul className="nav nav-second-level">
+                        <li onClick={ this.handleClick }>
+                            <a href="#">
+                            	<i className="fa fa-bar-chart-o fa-fw"></i>&nbsp;Charts
+                            	<span className="fa arrow"></span>
+                            </a>
+                            <ul className={"nav nav-second-level" + (this.state.isToggleOn ? ' collapse' : '')}>
                                 <li>
                                     <a href="flot.html">Flot Charts</a>
                                 </li>
@@ -32,14 +51,19 @@ class SideBar extends React.Component {
                             </ul>
                         </li>
                         <li>
-                            <a href="tables.html"><i className="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="tables.html">
+                            	<i className="fa fa-table fa-fw"></i> Tables
+                            </a>
                         </li>
                         <li>
                             <a href="forms.html"><i className="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
-                        <li>
-                            <a href="#"><i className="fa fa-wrench fa-fw"></i> UI Elements<span className="fa arrow"></span></a>
-                            <ul className="nav nav-second-level">
+                        <li onClick={ this.handleClick }>
+                            <a href="#">
+                            	<i className="fa fa-wrench fa-fw"></i>&nbsp;UI Elements
+                            	<span className="fa arrow"></span>
+                            </a>
+                            <ul className={"nav nav-second-level" + (this.state.isToggleOn ? ' collapse' : '')}>
                                 <li>
                                     <a href="panels-wells.html">Panels and Wells</a>
                                 </li>
@@ -60,9 +84,12 @@ class SideBar extends React.Component {
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#"><i className="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span className="fa arrow"></span></a>
-                            <ul className="nav nav-second-level">
+                        <li onClick={ this.handleClick }>
+                            <a href="#">
+                            	<i className="fa fa-sitemap fa-fw"></i>&nbsp;Multi-Level Dropdown
+                            	<span className="fa arrow"></span>
+                            </a>
+                            <ul className={"nav nav-second-level" + (this.state.isToggleOn ? ' collapse' : '')}>
                                 <li>
                                     <a href="#">Second Level Item</a>
                                 </li>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class NaviBarTopMessages extends React.Component {
+class NaviBarTopMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,7 +27,7 @@ class NaviBarTopMessages extends React.Component {
                 </a>
                 <ul className="dropdown-menu dropdown-messages">
 		            {this.props.messages.map(function(objMessage, i){
-		                return <li>
+		                return <li key={ i }>
 			                    { (i > 0) ? <div className="divider"></div> : '' }
 		                		  <a href="#">
 		                			  <div>
@@ -39,7 +39,8 @@ class NaviBarTopMessages extends React.Component {
 					                  <div>{ objMessage.text }</div>
 					              </a>
 					           </li>;
-		            })}                
+		            })}
+		            { (this.props.messages.length > 0) ? <li className="divider"></li> : null }
                     <li>
                         <a className="text-center" href="#">
                             <strong>Read All Messages</strong>&nbsp;&nbsp;
@@ -52,12 +53,12 @@ class NaviBarTopMessages extends React.Component {
 	}
 }
 
-NaviBarTopMessages.propTypes = {
+NaviBarTopMessage.propTypes = {
 		classIcon: PropTypes.string,
 		messages: PropTypes.array
 };
 
-NaviBarTopMessages.defaultProps = {
+NaviBarTopMessage.defaultProps = {
 		classIcon: "fa fa-envelope fa-fw",
 		messages: [
 			{
@@ -73,4 +74,4 @@ NaviBarTopMessages.defaultProps = {
 		]
 };
 
-export default NaviBarTopMessages;
+export default NaviBarTopMessage;

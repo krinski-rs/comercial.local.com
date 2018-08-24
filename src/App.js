@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Wrapper from './screens/Wrapper';
 
 import './css/bootstrap/css/bootstrap.css';
-//import './css/metisMenu/metisMenu.css';
+import './css/metisMenu/metisMenu.css';
 import './css/sb-admin-2.css';
 //import './css/morris.css';
 import './css/font-awesome/css/font-awesome.css';
