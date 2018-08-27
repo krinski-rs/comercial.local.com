@@ -31,7 +31,7 @@ class SideBarItem extends React.Component {
                     {
                     	this.props.itens.map(function(obj, idx){
                     		if(!!obj.itens && (obj.itens.length > 0)){
-                    			return <SideBarItem text={obj.text} level={obj.level} itemClass={obj.itemClass} itens={ obj.itens } key={idx} />
+                    			return <SideBarItem text={obj.text} level={ "third" } itemClass={obj.itemClass} itens={ obj.itens } key={idx} />
                     		}else{
                     			return <ItemSideBar text={obj.text} itemIcon={obj.itemIcon} key={idx} />
                     		}
