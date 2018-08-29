@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
-
-import Wrapper from './screens/Wrapper';
+import {
+	  BrowserRouter as Router,
+	  Route,
+	  Link,
+	  Switch,
+	  Redirect
+	} from "react-router-dom";
+import Container from './screens/Container';
+import WillMatch from './components/WillMatch';
+import NoMatch from './components/NoMatch';
 
 import './css/bootstrap/css/bootstrap.css';
-import './css/metisMenu/metisMenu.css';
-import './css/sb-admin-2.css';
-//import './css/morris.css';
-import './css/font-awesome/css/font-awesome.css';
+import './css/home.css';
+//import { fas } from '@fortawesome/free-solid-svg-icons'
+//
+//import { library } from '@fortawesome/fontawesome-svg-core'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faStroopwafel, faHome } from '@fortawesome/free-solid-svg-icons'
+//library.add(faStroopwafel)
+//library.add(faHome)
 /*<link href="%PUBLIC_URL%/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- MetisMenu CSS -->
@@ -22,11 +34,18 @@ import './css/font-awesome/css/font-awesome.css';
 <link href="%PUBLIC_URL%/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 */
 class App extends Component {
-  render() {
-    return (
-	    	<Wrapper />
-    );
-  }
+	render(){
+		return(
+			<Router>
+				<Switch>
+					<Route path="/" exact component={ Container } />
+					<Redirect from="/old-match" to="/will-match" />
+					<Route path="/will-match" component={ WillMatch } />
+					<Route component={ NoMatch } />
+				</Switch>
+			</Router>			
+		);
+	}
 }
 
 export default App;
