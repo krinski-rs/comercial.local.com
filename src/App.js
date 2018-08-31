@@ -39,8 +39,6 @@ class App extends Component {
 			<Router>
 				<Switch>
 					<Route path="/" exact component={ Container } />
-					<Redirect from="/old-match" to="/will-match" />
-					<Route path="/will-match" component={ WillMatch } />
 					<Route component={ NoMatch } />
 				</Switch>
 			</Router>			
