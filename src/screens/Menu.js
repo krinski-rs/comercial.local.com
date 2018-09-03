@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import {
+	  BrowserRouter as Router,
+	  Route,
+	  Link,
+	  Switch,
+	  Redirect
+	} from "react-router-dom";
 import PropTypes from 'prop-types';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MenuItem from './MenuItem';
 import MenuItemList from './MenuItemList';
+import Opa from './Opa';
+import NoMatch from '../components/NoMatch';
 
 class Menu extends React.Component {
 	
@@ -22,77 +30,6 @@ class Menu extends React.Component {
                         		}
 	                    	})
 	                    }
-						<li className="nav-item ">
-							<Link className="nav-link" to={"/aplicacoes/"}>
-			                	<FontAwesomeIcon icon={ fas.faChartBar }  />&nbsp;Estatísticas
-		                	</Link>
-			            </li>
-			            <li className="nav-item">
-			            	<a className="nav-link pl-3 dropdown-toggle text-nowrap collapsed" href="#" data-toggle="collapse" aria-expanded="false">
-			            		<FontAwesomeIcon icon={ fas.faFileInvoiceDollar }  />&nbsp;Dropdown
-			            	</a>
-			            	<div className="collapse">
-			            		<ul className="flex-column nav">
-			            			<a className="nav-link px-5 text-truncate" href="#">Sub</a>
-			            			<a className="nav-link px-5 text-truncate" href="#">Sub longer</a>
-			            		</ul>
-			            	</div>
-			            </li>
-			            <li className="nav-item">
-			            	<a className="nav-link" href="#">
-			            		<FontAwesomeIcon icon={ fas.faFileInvoiceDollar }  />&nbsp;Financeiro
-			            	</a>
-			            </li>
-			            <li className="nav-item">
-			            	<a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faCarAlt }  />&nbsp;Frota
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			            	<a className="nav-link" href="#">
-			            		<FontAwesomeIcon icon={ fas.faLink }  />&nbsp;Implantação
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			            	<a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faMapMarkedAlt }  />&nbsp;Localidades
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faDolly }  />&nbsp;LUMA
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faDonate }  />&nbsp;MOVI
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faPhone }  />&nbsp;Voice
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faUserCircle }  />&nbsp;RH
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faUserCircle }  />&nbsp;TroubleTicket
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faUserCircle }  />&nbsp;CRV
-			                </a>
-			            </li>
-			            <li className="nav-item">
-			                <a className="nav-link" href="#">
-			                	<FontAwesomeIcon icon={ fas.faUserCircle }  />&nbsp;Auditoria
-			                </a>
-			            </li>
 			        </ul>
 			    </div>
 			</nav>
@@ -113,7 +50,7 @@ Menu.defaultProps = {
 			itens: [
 				{
 					text: 'Clientes',
-					href: '/pessoas/clientes',
+					href: '/pessoas/clientes/',
 					icon: fas.faUserTie,
 					itens: []
 				},
@@ -157,7 +94,7 @@ Menu.defaultProps = {
 				{
 					text: 'Abastecimento',
 					href: '/luma/abastecimento',
-					icon: fas.faUserGraduate,
+					icon: fas.faShoppingCart,
 					itens: []
 				}
 			]

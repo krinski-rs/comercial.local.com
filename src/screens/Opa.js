@@ -19,7 +19,7 @@ class Opa extends React.Component {
 			        <Menu />
 			        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
 			          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			            <h1 className="h2">Home</h1>
+			            <h1 className="h2">{ this.props.title }</h1>
 			          </div>
 			        </main>
 			      </div>
@@ -29,11 +29,11 @@ class Opa extends React.Component {
 }
 
 Opa.propTypes = {
-		companyName: PropTypes.string
+	title: PropTypes.string
 };
 
 Opa.defaultProps = {
-		companyName: "RK Admin V1.0"
+		title: "Home"
 };
 
 export default Opa;
